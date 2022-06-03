@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <SDL.h>
 #include <SDL_image.h>
+#include <iostream>
+#include <conio.h>
 
 #include "Tjoueur.h"
 #include "Tfenetre.h"
@@ -11,11 +13,9 @@
 
 int main(int argc, char** argv)
 {
-	/*posj pos;
+	posj pos;
 	pos.n_x = 0;
-	pos.n_y = 0;*/
-
-	
+	pos.n_y = 0;
 
 
 
@@ -28,7 +28,7 @@ int main(int argc, char** argv)
 
 	
 
-	window = SDL_CreateWindow("Affichage avec SDL2_image", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, 0);
+	window = SDL_CreateWindow("RPG ou Platformer?", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, 0);
 	if (window == NULL) {
 		SDL_Log("ERREUR > %s\n", SDL_GetError());
 		clean_ressources(NULL, NULL, NULL);
@@ -83,12 +83,71 @@ int main(int argc, char** argv)
 
 
 	SDL_RenderPresent(renderer);
-
+	
 	//la fenêtre reste ouverte
-	//while (app_tourne == true) {
+	while (app_tourne) {
+		SDL_Event event;
+		while (SDL_PollEvent(&event)){//si on clique sur la croix la fenêtre se ferme
+			if (event.type == SDL_QUIT)
+			{
+				app_tourne = false;
+			}
 
-	//}
-	SDL_Delay(5000);
+			
+
+		}
+
+		SDL_Event keyevent;
+
+		while (SDL_PollEvent(&keyevent)) // chaque touche pressées, un évènement s'active.
+		{
+
+			switch (keyevent.type) {
+			case SDL_KEYDOWN://lorsqu'on appuis sur la flèche du bas, on peut se déplacer en diagonale
+				switch (keyevent.key.keysym.sym) {
+				case SDLK_LEFT:
+					charxvel = -1;
+					break;
+				case SDLK_RIGHT:
+					charxvel = 1;
+					break;
+				case SDLK_UP://on ne peut pas aller en haut et en bas en même temps
+					charyvel = -1;
+					break;
+				case SDLK_DOWN://on reste vers le bas
+					charyvel = 1;
+					break;
+				default:
+					break;
+				}
+				break;
+			case SDL_KEYUP://lorsqu'on appuis sur la flèche du haut, on peut se déplacer en diagonale
+				switch (keyevent.key.keysym.sym) {
+				case SDLK_LEFT:
+					charxvel = 0;
+					break;
+				case SDLK_RIGHT:
+					charxvel = 0;
+					break;
+				case SDLK_UP: //on reste vers le haut
+					charyvel = 0;
+					break;
+				case SDLK_DOWN://on ne peut pas aller en haut et en bas en même temps
+					charyvel = 0;
+					break;
+				default:
+					break;
+				}
+			}
+		}
+
+	charx += charxvel; chary += charyvel;
+		
+	}
+	
+
+
+
 
 	clean_ressources(window, renderer, texture);
 	return EXIT_SUCCESS;

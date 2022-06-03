@@ -5,7 +5,8 @@ typedef struct posj {
 	int n_y;
 };
 
-typedef struct deplacementj {
+/*typedef struct deplacementj {
 	int n_gauche_droite;
 	int n_haut_bas;
-};
+};*/
+
