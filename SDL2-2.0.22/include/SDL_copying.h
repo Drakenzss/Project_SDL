@@ -1,6 +1,10 @@
 /*
   Simple DirectMedia Layer
+<<<<<<< HEAD
   Copyright (C) 1997-2017 Sam Lantinga <slouken@libsdl.org>
+=======
+  Copyright (C) 1997-2022 Sam Lantinga <slouken@libsdl.org>
+>>>>>>> c12f66d0cc703f0337fc35f2d63c80a4f562dc6b
 
   This software is provided 'as-is', without any express or implied
   warranty.  In no event will the authors be held liable for any damages

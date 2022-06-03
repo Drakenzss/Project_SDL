@@ -1,12 +1,20 @@
 #pragma once
 	
 typedef struct posj {
-	int n_x;
-	int n_y;
+	int n_x;//droite
+	int n_y;//gauche
+	
 };
 
-/*typedef struct deplacementj {
-	int n_gauche_droite;
-	int n_haut_bas;
-};*/
+enum class dr_ga {
+	droite, gauche 
+};
+
+enum class ht_bas {
+	haut, bas
+};
+
+
+
+
 

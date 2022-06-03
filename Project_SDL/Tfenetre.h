@@ -13,7 +13,15 @@ void clean_ressources(SDL_Window* w, SDL_Renderer* r, SDL_Texture* t) {
 
 }
 
-bool app_tourne = true;
+enum Bool{
+
+	True, False
+
+};
+
+
+enum Bool app_tourne = True;
+
 
 
 
