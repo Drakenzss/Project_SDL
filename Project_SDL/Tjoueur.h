@@ -1,18 +1,19 @@
 #pragma once
 	
 typedef struct posj {
-	int n_x;//droite
-	int n_y;//gauche
+	int n_x;//droite gauche
+	int n_y;//haut bas
 	
 };
 
-enum class dr_ga {
-	droite, gauche 
+typedef struct direction {
+	int droite;
+	int gauche;
+	int haut;
+	int bas;
 };
 
-enum class ht_bas {
-	haut, bas
-};
+
 
 
 
